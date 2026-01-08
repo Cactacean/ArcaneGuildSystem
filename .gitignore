@@ -1,0 +1,9 @@
+# Compiled classes
+target/
+
+# NetBeans private project files
+nbproject/private/
+
+# OS files
+.DS_Store
+Thumbs.db
