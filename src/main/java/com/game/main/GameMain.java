@@ -1,6 +1,5 @@
 package com.game.main;
 
-
 import com.game.character.Character;
 import com.game.character.Warrior;
 import com.game.character.Wizard;
@@ -16,22 +15,31 @@ A main class to test the system*/ //14:46 all fulfilled
 
 //14:46: add 1 helper method in gamemain done at 14:54
 //14:57: gamemain does not have attributes
-//
+
 public class GameMain {
+
+    // this class is just the runner, so no attributes
     
-    //helper method (method_1)
+    // ============================
+    //          METHODS
+    // ============================
+
+    // [Method 1] Helper Method
+    // You added this to satisfy the "2 methods" requirement if strictly applied.
     private static void showTitle() { 
-    System.out.println("=== Arcane Guild Battle System ===");
+        System.out.println("=== Arcane Guild Battle System ===");
     }
     
-    //method_2
+    // [Method 2] Main Method (The Entry Point)
     public static void main(String[] args) {
-        showTitle();
+        showTitle(); // Calls Method 1
+        
+        // Polymorphism in action:
+        // Declaring as 'Character' (Parent), but creating 'Warrior'/'Wizard' (Children)
         Character warrior = new Warrior("Ace");
         Character wizard = new Wizard("Merlin");
 
+        // Passes these characters to the BattleSimulator we analyzed earlier
         BattleSimulator.fight(warrior, wizard);
     }
 }
-
-
