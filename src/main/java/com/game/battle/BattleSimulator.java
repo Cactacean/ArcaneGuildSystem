@@ -6,36 +6,49 @@ import java.util.Scanner;
 
 public class BattleSimulator {
 
-    private static Scanner sc = new Scanner(System.in);
+    
+    //        ATTRIBUTE
+    // ============================
+    /* This is the class-level attribute. It is static so it can be used
+     by the static methods below. */
+    private static Scanner sc = new Scanner(System.in); 
 
+
+    // ============================
+    //         METHODS
+    // ============================
+    
+    // [METHOD 1] Main logic for the battle loop
     public static void fight(Character p1, Character p2) {
 
         System.out.println("\n=== BATTLE START ===");
 
-        int round = 1;
+        int round = 1; // This is a LOCAL VARIABLE
 
         while (p1.getHealth() > 0 && p2.getHealth() > 0) {
             System.out.println("\n--- Round " + round + " ---");
 
-            playerTurn(p1, p2);
+            playerTurn(p1, p2); // Calling Method 2
             if (p2.getHealth() <= 0) break;
 
-            playerTurn(p2, p1);
+            playerTurn(p2, p1); // Calling Method 2
             round++;
         }
 
         System.out.println("\n=== BATTLE OVER ===");
-        showWinner(p1, p2);
+        showWinner(p1, p2); // Calling Method 3
     }
 
+    // [METHOD 2] Logic for a specific player's turn
     private static void playerTurn(Character attacker, Character defender) {
         System.out.println("\n" + attacker.getName() + "'s Turn");
         System.out.println("1. Normal Attack");
         System.out.println("2. Special Move");
         System.out.print("Choose action: ");
 
-        int choice = sc.nextInt();
-
+        int choice = sc.nextInt(); // Using the 'sc' attribute
+        
+    //Using switch cases
         switch (choice) {
             case 1:
                 attacker.attack(defender);
@@ -55,6 +68,7 @@ public class BattleSimulator {
                 " HP: " + defender.getHealth());
     }
 
+    // [METHOD 3] Logic to declare the winner
     private static void showWinner(Character p1, Character p2) {
         if (p1.getHealth() > 0) {
             System.out.println("🏆 Winner: " + p1.getName());
